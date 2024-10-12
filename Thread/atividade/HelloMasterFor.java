@@ -8,16 +8,16 @@ public class HelloMasterFor {
     private int[] vetor;
 
     public HelloMasterFor(int nThreads, int[] vetor) {
-        // this.nThreads = nThreads;
-        // this.vThreads = new Thread[nThreads];
+        this.nThreads = nThreads;
+        this.vThreads = new Thread[nThreads];
         this.vetor = vetor;
     }
 
     public void letsGetSomeHellos() {
-        // for (int i = 0; i < nThreads; i++) {
-        //     vThreads[i] = new Thread(new HelloFromThreads(i));
-        //     vThreads[i].start();
-        // }
+        for (int i = 0; i < nThreads; i++) {
+            vThreads[i] = new Thread(new HelloFromThreads(i));
+            vThreads[i].start();
+        }
         vThreads[0] = new Thread(new HelloFromThreads(0, vetor, 0, 5));
         vThreads[1] = new Thread(new HelloFromThreads(0, vetor, 5, 10));
 
