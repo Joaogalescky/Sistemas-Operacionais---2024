@@ -16,7 +16,7 @@ public class AddVetorThread implements Runnable {
     @Override
     public void run() {
         for(int i = inicio; i <= fim; i++) {
-            r[i] = 10 + tId;
+            r[i] = a[i] * b[i]; 
         }
     }
 }

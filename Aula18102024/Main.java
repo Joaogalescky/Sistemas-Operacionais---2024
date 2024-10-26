@@ -1,29 +1,55 @@
+import java.util.Random;
+
 import atividade.AddVetorMaster;
 
 public class Main {
-    private static final int TAMANHO = 7;
+    private static final int TAMANHO = 90000000;
     private static final int NTHREADS = 2;
 
     public static void main(String[] args) {
-        // criar vetores
+        // Criar vetores
         double[] a = new double[TAMANHO];
         double[] b = new double[TAMANHO];
-        double[] r = new double[TAMANHO];
+        double[] r;
 
-        // para sábado: preencher o vetor com números aleatorios do tipo double
+        // Preencher vetores
+        Random random = new Random();
+        for (int i = 0; i < TAMANHO; i++) {
+            a[i] = random.nextDouble() * 100;
+            b[i] = random.nextDouble() * 100;
+        }
 
-        // instanciar Master
+        // Imprimir valores de A
+        //System.out.println("Vetor A:");
+        for (int i = 0; i < TAMANHO; i++) {
+            //System.out.printf("%.2f\n", a[i]);
+        }
+
+        // Imprimir valores de B
+        //System.out.println("Vetor B:");
+        for (int i = 0; i < TAMANHO; i++) {
+            //System.out.printf("%.2f\n", b[i]);
+        }
+
+        // Instanciar Master
         AddVetorMaster mrm = new AddVetorMaster(a, b, NTHREADS);
 
-        // executar Master
+        // Executar Master
         mrm.calcVetores();
         r = mrm.getVetorR();
 
-        // pegar e imprimir resultado
-        System.out.print("[ " + r[0]);
+        // try {
+        //     Thread.sleep(1500);
+        // } catch (InterruptedException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
+
+        // Imprimir resultado
+        //System.out.printf("[R[0] " + "%.2f", r[0]);
         for(int i = 1; i < TAMANHO - 1; i++){
-            System.out.print(" | " + r[i]);
+            //System.out.printf(" | " + "%.2f", r[i]);
         }
-        System.out.println(" | " + r[TAMANHO - 1] + " ]");
+        //System.out.printf(" | Tamanho: " + "%.2f" + " ]\n", r[TAMANHO - 1]);
     }
 }

@@ -30,6 +30,7 @@ public class AddVetorMaster {
     }
 
     public double[] getVetorR() {
+        joinThreads();
         return r;
     }
 
@@ -51,6 +52,12 @@ public class AddVetorMaster {
     }
 
     private void joinThreads() {
-
+        try {
+            for (int i = 0; i < numThreads; i++) {
+                v_threads[i].join();
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 }
